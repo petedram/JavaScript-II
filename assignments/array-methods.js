@@ -89,18 +89,37 @@ let ticketPriceTotal = runners.reduce(function(total, runner) {
 },0);
 console.log(ticketPriceTotal);
 
-// double check value is correct with a forEach
+// ==== Challenge 5: Be Creative ====
+// Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
+
+// Problem 1
+// double check the tax value is correct with a forEach
 let addDonations = 0
 runners.forEach(function(element) {
   addDonations += element.donation;
 });
 console.log(addDonations);
 
-// ==== Challenge 5: Be Creative ====
-// Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
-
-// Problem 1
 
 // Problem 2
+// Calculate a 2.9% commission of the donations which has to be paid to the payment merchant 
+// Round it to 2 decimals
+let commission =  ticketPriceTotal * 0.029;
+console.log(commission.toFixed(2));
 
 // Problem 3
+// Find the record of the largest donation 
+let donationArray = [];
+runners.forEach(function(element) {
+  donationArray.push(element.donation);
+});
+
+let largestDonation = Math.max.apply(Math,donationArray);
+
+function isLargest(value) {
+  return value.donation === largestDonation;
+}
+
+let runnerLargestDonation = runners.filter(isLargest);
+console.log('The largest donation is '+ largestDonation);
+console.log (runnerLargestDonation);
